@@ -19,19 +19,14 @@ const getBooksInYear = async function (req, res) {
   res.send({ msg: getBooksByYear });
 };
 const getParticularBooks = async function (req, res) {
-  let bookName = req.body.bookName;
-  let europeanPrice = req.body.prices.europeanPrice;
-  let selectBooks = await bookModel.find({
-    $and: [
-      { bookName: bookName },
-      { "prices.europeanPrice": { $gt: europeanPrice } },
-    ],
-  });
+  let bookData = req.body
+  console.log(bookData)
+  let selectBooks = await bookModel.find({ bookData })
   res.send(selectBooks);
 };
 const getXINRBooks = async function (req, res) {
   let getBookINR = await bookModel.find({
-    "prices.indianPrice": { $in: ["100INR", "200INR", "500INR"] },
+    'prices.indianPrice': { $in: ["100INR", "200INR", "500INR","1080"] },
   });
   res.send(getBookINR);
 };
