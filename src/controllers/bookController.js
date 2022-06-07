@@ -1,9 +1,9 @@
 const { count } = require("console");
-const BookModel = require("../models/bookModel");
+const bookModel = require("../models/bookModel");
 
 const createBook = async function (req, res) {
   let newBookdata = req.body;
-  let savedData = await BookModel.create(newBookdata);
+  let savedData = await bookModel.create(newBookdata);
   res.send({ msg: savedData });
 };
 
