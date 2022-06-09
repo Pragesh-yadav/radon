@@ -1,6 +1,7 @@
 const { count } = require("console");
 const bookModel = require("../models/bookModel");
-const authorModel = require("../models/authorModel")
+const authorModel = require("../models/authorModel");
+const { updateMany } = require("../models/bookModel");
 
 const createBook = async function (req, res) {
   let newBookdata = req.body;
@@ -18,7 +19,6 @@ const bookByBhagat = async function(req, res)  {
         let getBook = await authorModel.find({author_name: "Chetan Bhagat"}).select("author_id")
         let bookBy = await bookModel.find({author_id: getBook[0].author_id})
         res.send({msg: bookBy})
-
 }
 
 const authorOfTwo = async function(req, res) {
@@ -31,8 +31,10 @@ const authorOfTwo = async function(req, res) {
 const bookAuthor = async function(req, res) {
   let author = []
   let books = await bookModel.find({price: {$gte:50,$lte:100}}).select({author_id:1})
+  ///console.log(book)
   for(let i = 0; i< books.length; i++) {
     let authorNameId = await authorModel.find({author_id:books[i].author_id}).select({author_name:1, _id:1})
+    //console.log(authorNameId)
     author.push(authorNameId)
   }
   res.send(author)
