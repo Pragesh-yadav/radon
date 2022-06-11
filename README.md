@@ -16,6 +16,10 @@
 
 <!-- e.g. -->
 router.post('/getHomePage' , MiddlewareIfLoggedIn,  UserController.homePage)
+router.post('/getHomePage' , MiddlewareIfLoggedIn,  UserController.homePage)
+router.post('/getHomePage' , MiddlewareIfLoggedIn,  UserController.homePage)
+router.post('/getHomePage' , MiddlewareIfLoggedIn,  UserController.homePage)
+router.post('/getHomePage' ,  UserController.homePage)
  
 function MiddlewareIfLoggedIn( req, res, next) {
     if loggedIn then call the next fucntion/handler which will give us the home page feeds
