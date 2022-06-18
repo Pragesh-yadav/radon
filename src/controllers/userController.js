@@ -1,4 +1,4 @@
-const UserModel= require("../models/userModel")
+const userModel= require("../models/userModel")
 
 
 
@@ -16,7 +16,7 @@ const UserModel= require("../models/userModel")
 const createUser= async function (req, res) {
     
     let data= req.body
-    let saveUser = await UserModel.create(data)
+    let saveUser = await userModel.create(data)
     req.send(saveUser)
     // let tokenDataInHeaders= req.headers.token
     // //Get all headers from request
